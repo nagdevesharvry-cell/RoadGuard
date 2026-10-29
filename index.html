@@ -2,9 +2,12 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RoadGuard Maharashtra — Intelligent Traffic Safety & Risk Intelligence</title>
-  <meta name="description" content="RoadGuard Maharashtra: AI-driven accident risk analysis, high-density crash corridor hotspots, what-if severity estimation, and multilingual road safety assistant.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>RoadGuard Maharashtra — Mobile & Web Traffic Safety Platform</title>
+  <meta name="description" content="RoadGuard Maharashtra: AI-driven accident risk analysis, high-density crash corridor hotspots, what-if severity estimation, and multilingual road safety assistant for mobile and desktop.">
+  <meta name="theme-color" content="#070e1b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,30 +18,31 @@
       --bg-gradient: radial-gradient(circle at 10% 12%, rgba(14, 165, 233, 0.12), transparent 32%),
                      radial-gradient(circle at 90% 70%, rgba(99, 102, 241, 0.09), transparent 36%),
                      #070e1b;
-      --bg-header: rgba(7, 14, 27, 0.88);
-      --bg-card: rgba(14, 25, 45, 0.78);
-      --bg-card-hover: rgba(18, 32, 58, 0.92);
-      --bg-inner: rgba(0, 0, 0, 0.28);
-      --bg-input: rgba(255, 255, 255, 0.05);
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-highlight: rgba(14, 165, 233, 0.35);
+      --bg-header: rgba(7, 14, 27, 0.92);
+      --bg-bottom-nav: rgba(7, 14, 27, 0.96);
+      --bg-card: rgba(14, 25, 45, 0.82);
+      --bg-card-hover: rgba(18, 32, 58, 0.94);
+      --bg-inner: rgba(0, 0, 0, 0.32);
+      --bg-input: rgba(255, 255, 255, 0.06);
+      --border-subtle: rgba(255, 255, 255, 0.09);
+      --border-highlight: rgba(14, 165, 233, 0.38);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --text-table: #e2e8f0;
       --primary: #0ea5e9;
-      --primary-glow: rgba(14, 165, 233, 0.25);
+      --primary-glow: rgba(14, 165, 233, 0.28);
       --accent-indigo: #6366f1;
       --accent-emerald: #10b981;
       --accent-amber: #f59e0b;
       --accent-rose: #f43f5e;
-      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
-      --table-stripe: rgba(255, 255, 255, 0.02);
-      --chat-bot-bg: rgba(255, 255, 255, 0.05);
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+      --table-stripe: rgba(255, 255, 255, 0.025);
+      --chat-bot-bg: rgba(255, 255, 255, 0.06);
       --chat-bot-text: #f1f5f9;
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
-      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     [data-theme="light"] {
@@ -46,20 +50,21 @@
       --bg-gradient: radial-gradient(circle at 10% 12%, rgba(14, 165, 233, 0.09), transparent 30%),
                      radial-gradient(circle at 90% 70%, rgba(99, 102, 241, 0.06), transparent 35%),
                      #f8fafc;
-      --bg-header: rgba(255, 255, 255, 0.92);
-      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-header: rgba(255, 255, 255, 0.94);
+      --bg-bottom-nav: rgba(255, 255, 255, 0.96);
+      --bg-card: rgba(255, 255, 255, 0.92);
       --bg-card-hover: #ffffff;
-      --bg-inner: rgba(241, 245, 249, 0.85);
+      --bg-inner: rgba(241, 245, 249, 0.9);
       --bg-input: #ffffff;
-      --border-subtle: rgba(15, 23, 42, 0.08);
+      --border-subtle: rgba(15, 23, 42, 0.09);
       --border-highlight: rgba(14, 165, 233, 0.5);
       --text-main: #0f172a;
       --text-muted: #64748b;
       --text-table: #1e293b;
       --primary: #0284c7;
-      --primary-glow: rgba(14, 165, 233, 0.15);
-      --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.06);
-      --table-stripe: rgba(15, 23, 42, 0.02);
+      --primary-glow: rgba(14, 165, 233, 0.18);
+      --shadow-card: 0 4px 18px rgba(15, 23, 42, 0.06);
+      --table-stripe: rgba(15, 23, 42, 0.025);
       --chat-bot-bg: #f8fafc;
       --chat-bot-text: #0f172a;
     }
@@ -68,6 +73,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -79,29 +85,32 @@
       line-height: 1.55;
       overflow-x: hidden;
       transition: background 0.3s ease, color 0.3s ease;
+      padding-bottom: 24px;
     }
 
     .container {
       max-width: 1380px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 20px;
     }
 
     /* ---------------- Header ---------------- */
     header {
       background: var(--bg-header);
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
       position: sticky;
       top: 0;
       z-index: 100;
+      padding-top: env(safe-area-inset-top);
       transition: background 0.3s ease, border-color 0.3s ease;
     }
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 74px;
+      height: 72px;
     }
     .brand {
       display: flex;
@@ -111,25 +120,27 @@
       color: inherit;
     }
     .brand-icon {
-      font-size: 1.85rem;
+      font-size: 1.75rem;
       background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(99, 102, 241, 0.2));
       border: 1px solid var(--border-highlight);
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: var(--radius-md);
       box-shadow: 0 0 16px var(--primary-glow);
+      flex-shrink: 0;
     }
     .brand-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       background: linear-gradient(90deg, #38bdf8, #818cf8, #0ea5e9);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      line-height: 1.2;
     }
     [data-theme="light"] .brand-title {
       background: linear-gradient(90deg, #0284c7, #4f46e5);
@@ -137,17 +148,17 @@
       -webkit-text-fill-color: transparent;
     }
     .brand-sub {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       color: var(--text-muted);
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .status-pill {
       display: inline-flex;
@@ -160,11 +171,6 @@
       border-radius: 9999px;
       font-size: 0.8rem;
       font-weight: 600;
-    }
-    [data-theme="light"] .status-pill {
-      background: rgba(16, 185, 129, 0.1);
-      border-color: rgba(16, 185, 129, 0.3);
-      color: #047857;
     }
     .status-dot {
       width: 8px;
@@ -184,47 +190,44 @@
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       color: var(--text-main);
-      padding: 7px 14px;
+      padding: 8px 12px;
       border-radius: var(--radius-sm);
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
       transition: var(--transition);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      min-height: 40px;
     }
     .theme-toggle-btn:hover {
       border-color: var(--primary);
       background: rgba(14, 165, 233, 0.12);
-      transform: translateY(-1px);
-    }
-    .theme-icon {
-      font-size: 1.05rem;
-      line-height: 1;
     }
 
     .lang-select {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       color: var(--text-main);
-      padding: 7px 12px;
+      padding: 8px 12px;
       border-radius: var(--radius-sm);
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       outline: none;
       transition: var(--transition);
+      min-height: 40px;
     }
     .lang-select:hover {
       border-color: var(--primary);
     }
+
     .btn-github {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       color: var(--text-main);
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: var(--radius-sm);
       font-size: 0.85rem;
       font-weight: 600;
@@ -233,13 +236,14 @@
       align-items: center;
       gap: 8px;
       transition: var(--transition);
+      min-height: 40px;
     }
     .btn-github:hover {
       border-color: var(--primary);
       transform: translateY(-1px);
     }
 
-    /* ---------------- Navigation Bar ---------------- */
+    /* ---------------- Desktop Navigation Bar ---------------- */
     .nav-bar {
       display: flex;
       gap: 6px;
@@ -247,14 +251,15 @@
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       padding: 6px;
-      margin: 22px 0;
+      margin: 20px 0;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .nav-btn {
       background: transparent;
       border: 1px solid transparent;
       color: var(--text-muted);
-      padding: 10px 18px;
+      padding: 10px 16px;
       border-radius: var(--radius-sm);
       font-size: 0.88rem;
       font-weight: 600;
@@ -276,7 +281,62 @@
       box-shadow: 0 0 14px var(--primary-glow);
     }
 
-    /* ---------------- Helplines Bar ---------------- */
+    /* ---------------- Mobile Bottom App Bar ---------------- */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-bottom-nav);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border-subtle);
+      z-index: 1000;
+      padding: 6px 12px calc(8px + env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+    }
+    .mobile-nav-grid {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .mobile-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      min-width: 54px;
+      gap: 3px;
+    }
+    .mobile-nav-icon {
+      font-size: 1.25rem;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .mobile-nav-item:active .mobile-nav-icon {
+      transform: scale(0.85);
+    }
+    .mobile-nav-item.active {
+      color: var(--primary);
+    }
+    .mobile-nav-item.active .mobile-nav-icon {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 0 8px var(--primary-glow));
+    }
+
+    /* ---------------- Emergency Helplines Bar ---------------- */
     .helpline-bar {
       display: flex;
       flex-wrap: wrap;
@@ -286,8 +346,8 @@
       background: linear-gradient(90deg, rgba(239, 68, 68, 0.12), rgba(245, 158, 11, 0.08));
       border: 1px solid rgba(239, 68, 68, 0.25);
       border-radius: var(--radius-md);
-      padding: 12px 20px;
-      margin-bottom: 24px;
+      padding: 12px 18px;
+      margin-bottom: 22px;
       font-size: 0.85rem;
     }
     .helpline-title {
@@ -303,12 +363,12 @@
     .helpline-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
     .helpline-tag {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      padding: 4px 12px;
+      padding: 6px 12px;
       border-radius: 9999px;
       color: var(--text-main);
       font-size: 0.78rem;
@@ -318,41 +378,31 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      min-height: 36px;
     }
-    .helpline-tag:hover {
+    .helpline-tag:hover, .helpline-tag:active {
       border-color: var(--accent-rose);
-      background: rgba(239, 68, 68, 0.15);
+      background: rgba(239, 68, 68, 0.18);
     }
 
     /* ---------------- Metric Cards Grid ---------------- */
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-bottom: 28px;
+      gap: 16px;
+      margin-bottom: 24px;
     }
-    @media (max-width: 980px) {
-      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 580px) {
-      .metrics-grid { grid-template-columns: 1fr; }
-    }
-
     .metric-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 22px;
+      padding: 20px;
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       position: relative;
       overflow: hidden;
       transition: var(--transition);
       box-shadow: var(--shadow-card);
-    }
-    .metric-card:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-highlight);
-      transform: translateY(-3px);
     }
     .metric-card::before {
       content: '';
@@ -378,7 +428,7 @@
     }
     .metric-val {
       font-family: 'Outfit', sans-serif;
-      font-size: 2.25rem;
+      font-size: 2.1rem;
       font-weight: 800;
       color: var(--text-main);
       letter-spacing: -0.03em;
@@ -386,7 +436,7 @@
       margin-bottom: 6px;
     }
     .metric-desc {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
@@ -395,18 +445,20 @@
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 26px;
+      padding: 24px;
       backdrop-filter: blur(14px);
-      margin-bottom: 24px;
+      -webkit-backdrop-filter: blur(14px);
+      margin-bottom: 22px;
       box-shadow: var(--shadow-card);
     }
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       border-bottom: 1px solid var(--border-subtle);
       padding-bottom: 14px;
+      gap: 12px;
     }
     .card-title {
       font-family: 'Outfit', sans-serif;
@@ -423,28 +475,39 @@
       margin-top: 3px;
     }
 
-    /* ---------------- Tables ---------------- */
+    /* ---------------- Tables & Mobile Hints ---------------- */
     .table-responsive {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: var(--radius-sm);
+    }
+    .swipe-hint {
+      display: none;
+      font-size: 0.72rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-weight: 600;
     }
     table {
       width: 100%;
+      min-width: 620px;
       border-collapse: collapse;
       text-align: left;
       font-size: 0.88rem;
     }
     th {
       background: var(--table-stripe);
-      padding: 12px 16px;
+      padding: 12px 14px;
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
       font-size: 0.74rem;
       letter-spacing: 0.06em;
       border-bottom: 1px solid var(--border-subtle);
+      white-space: nowrap;
     }
     td {
-      padding: 14px 16px;
+      padding: 14px 14px;
       border-bottom: 1px solid var(--border-subtle);
       color: var(--text-table);
     }
@@ -457,6 +520,7 @@
       border-radius: 9999px;
       font-size: 0.74rem;
       font-weight: 700;
+      white-space: nowrap;
     }
     .badge-high { background: rgba(239, 68, 68, 0.16); border: 1px solid rgba(239, 68, 68, 0.35); color: #ef4444; }
     .badge-med { background: rgba(245, 158, 11, 0.16); border: 1px solid rgba(245, 158, 11, 0.35); color: #d97706; }
@@ -466,11 +530,8 @@
     .form-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-bottom: 22px;
-    }
-    @media (max-width: 860px) {
-      .form-grid { grid-template-columns: 1fr; }
+      gap: 16px;
+      margin-bottom: 20px;
     }
     .form-group label {
       display: block;
@@ -484,11 +545,12 @@
       background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       color: var(--text-main);
-      padding: 10px 14px;
+      padding: 12px 14px;
       border-radius: var(--radius-sm);
-      font-size: 0.9rem;
+      font-size: 16px; /* Prevents auto-zoom in iOS Safari */
       outline: none;
       transition: var(--transition);
+      min-height: 44px;
     }
     .form-control:focus {
       border-color: var(--primary);
@@ -498,25 +560,29 @@
       background: linear-gradient(135deg, #0ea5e9, #6366f1);
       color: #fff;
       border: none;
-      padding: 12px 24px;
+      padding: 12px 20px;
       border-radius: var(--radius-sm);
       font-size: 0.92rem;
       font-weight: 700;
       cursor: pointer;
       transition: var(--transition);
       box-shadow: 0 4px 18px rgba(14, 165, 233, 0.35);
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
-    .btn-calc:hover {
-      transform: translateY(-2px);
+    .btn-calc:hover, .btn-calc:active {
+      transform: translateY(-1px);
       box-shadow: 0 6px 24px rgba(14, 165, 233, 0.5);
     }
 
     .prediction-box {
-      margin-top: 20px;
+      margin-top: 18px;
       background: var(--bg-inner);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      padding: 20px;
+      padding: 18px;
     }
     .progress-bar {
       height: 10px;
@@ -543,14 +609,15 @@
     }
     .chat-messages {
       flex: 1;
-      padding: 20px;
+      padding: 16px;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
     .chat-msg {
-      max-width: 80%;
+      max-width: 85%;
       padding: 12px 16px;
       border-radius: var(--radius-md);
       font-size: 0.9rem;
@@ -575,33 +642,42 @@
       color: #ffffff;
     }
     .chat-quick {
-      padding: 10px 16px;
+      padding: 10px 14px;
       background: var(--table-stripe);
       border-top: 1px solid var(--border-subtle);
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .chat-quick::-webkit-scrollbar {
+      display: none;
     }
     .chip {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       color: var(--text-muted);
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 9999px;
       font-size: 0.78rem;
       font-weight: 600;
       cursor: pointer;
       transition: var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-height: 32px;
     }
-    .chip:hover {
+    .chip:hover, .chip:active {
       background: rgba(14, 165, 233, 0.15);
       border-color: var(--primary);
       color: var(--primary);
     }
     .chat-input-bar {
       display: flex;
-      gap: 10px;
-      padding: 12px 16px;
+      gap: 8px;
+      padding: 10px 14px;
       border-top: 1px solid var(--border-subtle);
       background: var(--bg-card);
     }
@@ -612,8 +688,9 @@
       border-radius: var(--radius-sm);
       color: var(--text-main);
       padding: 10px 14px;
-      font-size: 0.9rem;
+      font-size: 16px; /* Prevents auto zoom in iOS */
       outline: none;
+      min-height: 44px;
     }
     .chat-input:focus {
       border-color: var(--primary);
@@ -622,14 +699,13 @@
       background: var(--primary);
       color: #fff;
       border: none;
-      padding: 0 20px;
+      padding: 0 18px;
       border-radius: var(--radius-sm);
       font-weight: 700;
       cursor: pointer;
       transition: var(--transition);
-    }
-    .chat-send:hover {
-      background: #0284c7;
+      min-height: 44px;
+      min-width: 64px;
     }
 
     /* ---------------- Tab Sections ---------------- */
@@ -648,16 +724,17 @@
     /* ---------------- Footer ---------------- */
     footer {
       border-top: 1px solid var(--border-subtle);
-      padding: 36px 0;
-      margin-top: 60px;
+      padding: 32px 0 60px;
+      margin-top: 40px;
       text-align: center;
       color: var(--text-muted);
       font-size: 0.82rem;
     }
     .footer-links {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 16px;
       margin-bottom: 12px;
     }
     .footer-links a {
@@ -665,31 +742,179 @@
       text-decoration: none;
       font-weight: 600;
     }
-    .footer-links a:hover {
-      text-decoration: underline;
+
+    /* ---------------- Mobile SOS Fast Dial ---------------- */
+    .mobile-sos-btn {
+      display: none;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+      align-items: center;
+      gap: 4px;
+      min-height: 38px;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
     }
 
     /* ---------------- Notification Toast ---------------- */
     #toast {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: calc(76px + env(safe-area-inset-bottom));
+      right: 20px;
+      left: 20px;
+      max-width: 380px;
+      margin: 0 auto;
       background: linear-gradient(135deg, #0ea5e9, #6366f1);
       color: #fff;
-      padding: 12px 20px;
+      padding: 12px 18px;
       border-radius: var(--radius-md);
       font-size: 0.88rem;
       font-weight: 600;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.3s ease;
       pointer-events: none;
-      z-index: 999;
+      z-index: 2000;
+      text-align: center;
     }
     #toast.show {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* ========================================================= */
+    /* ---------------- MOBILE OPTIMIZATIONS (< 768px) --------- */
+    /* ========================================================= */
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: calc(84px + env(safe-area-inset-bottom));
+      }
+      .container {
+        padding: 0 14px;
+      }
+      .header-inner {
+        height: 60px;
+      }
+      .brand-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.45rem;
+      }
+      .brand-title {
+        font-size: 1.1rem;
+      }
+      .brand-sub {
+        display: none;
+      }
+      .status-pill {
+        display: none; /* Saved space on mobile header */
+      }
+      .btn-github {
+        display: none; /* Moved to footer */
+      }
+      .mobile-sos-btn {
+        display: inline-flex;
+      }
+      .theme-toggle-btn {
+        padding: 6px 10px;
+        min-height: 36px;
+      }
+      #themeLabel {
+        display: none; /* Show only moon/sun icon */
+      }
+      .lang-select {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+        min-height: 36px;
+      }
+
+      /* Hide top navigation tabs, activate bottom mobile bar */
+      .nav-bar {
+        display: none !important;
+      }
+      .mobile-bottom-nav {
+        display: block !important;
+      }
+
+      /* Responsive Emergency Helplines */
+      .helpline-bar {
+        padding: 10px 14px;
+        margin-bottom: 16px;
+      }
+      .helpline-chips {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .helpline-tag {
+        justify-content: center;
+        padding: 8px;
+        font-size: 0.75rem;
+      }
+
+      /* Metrics: 2 columns on mobile */
+      .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      .metric-card {
+        padding: 14px;
+        border-radius: var(--radius-md);
+      }
+      .metric-val {
+        font-size: 1.65rem;
+      }
+      .metric-desc {
+        font-size: 0.72rem;
+      }
+
+      /* Content Cards */
+      .card {
+        padding: 16px;
+        border-radius: var(--radius-md);
+        margin-bottom: 16px;
+      }
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .card-title {
+        font-size: 1.1rem;
+      }
+
+      /* Form inputs single column */
+      .form-grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px;
+      }
+
+      /* Show swipe table indicator */
+      .swipe-hint {
+        display: block;
+      }
+
+      /* Chat container adapts to screen */
+      .chat-container {
+        height: 60vh;
+        min-height: 380px;
+      }
+      .chat-msg {
+        max-width: 90%;
+        font-size: 0.86rem;
+      }
+
+      /* Route result cards stack vertically */
+      #routeResults > div {
+        grid-template-columns: 1fr !important;
+      }
     }
   </style>
 </head>
@@ -701,11 +926,16 @@
       <a href="#" class="brand">
         <div class="brand-icon">🚦</div>
         <div>
-          <div class="brand-title">RoadGuard Maharashtra</div>
+          <div class="brand-title">RoadGuard</div>
           <div class="brand-sub" id="headerTagline">Traffic Safety & Risk Intelligence</div>
         </div>
       </a>
       <div class="header-actions">
+        <!-- Mobile SOS Quick Call -->
+        <a href="tel:112" class="mobile-sos-btn" onclick="showToast('Calling National Highway Emergency: 112')">
+          <span>🚨</span> <span>SOS 112</span>
+        </a>
+
         <!-- Theme Switcher (Dark / Light) -->
         <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle dark/light mode" title="Switch Theme">
           <span class="theme-icon" id="themeIcon">🌙</span>
@@ -716,13 +946,15 @@
           <span class="status-dot"></span>
           <span id="systemStatus">System Active</span>
         </div>
+
         <select class="lang-select" id="langSelector" onchange="switchLanguage(this.value)" aria-label="Select Language">
-          <option value="en">English</option>
-          <option value="hi">हिन्दी (Hindi)</option>
-          <option value="mr">मराठी (Marathi)</option>
+          <option value="en">EN</option>
+          <option value="hi">हिन्दी</option>
+          <option value="mr">मराठी</option>
         </select>
+
         <a href="https://github.com/nagdevesharvry-cell/RoadGuard" target="_blank" rel="noopener noreferrer" class="btn-github" id="githubLink">
-          <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           <span>GitHub</span>
         </a>
       </div>
@@ -734,17 +966,17 @@
     <div class="helpline-bar">
       <div class="helpline-title">
         <span>🚨</span>
-        <span id="helplineText">Maharashtra Highway Emergency Helplines:</span>
+        <span id="helplineText">Highway Emergency Helplines:</span>
       </div>
       <div class="helpline-chips">
-        <a href="tel:112" class="helpline-tag" onclick="showToast('Dialling National Emergency: 112')">📞 Police: 112</a>
-        <a href="tel:9822498224" class="helpline-tag" onclick="showToast('Dialling Highway Traffic Police: 9822498224')">🚨 Highway Police: 98224-98224</a>
-        <a href="tel:18002332233" class="helpline-tag" onclick="showToast('Dialling MSRDC Helpline: 1800-233-2233')">🛣️ MSRDC (Expressway): 1800-233-2233</a>
-        <a href="tel:108" class="helpline-tag" onclick="showToast('Dialling Medical Emergency: 108')">🚑 Ambulance: 108</a>
+        <a href="tel:112" class="helpline-tag" onclick="showToast('Dialling Police: 112')">📞 Police: 112</a>
+        <a href="tel:9822498224" class="helpline-tag" onclick="showToast('Dialling Highway Police: 9822498224')">🚨 Traffic: 9822498224</a>
+        <a href="tel:18002332233" class="helpline-tag" onclick="showToast('Dialling MSRDC: 18002332233')">🛣️ MSRDC Helpline</a>
+        <a href="tel:108" class="helpline-tag" onclick="showToast('Dialling Ambulance: 108')">🚑 Medical: 108</a>
       </div>
     </div>
 
-    <!-- Navigation Tabs -->
+    <!-- Desktop Navigation Bar -->
     <nav class="nav-bar" id="mainNav">
       <button class="nav-btn active" onclick="switchTab('overview')" id="tabBtnOverview">📊 Overview</button>
       <button class="nav-btn" onclick="switchTab('hotspots')" id="tabBtnHotspots">🔥 Corridor Hotspots</button>
@@ -799,9 +1031,10 @@
             <h2 class="card-title"><span>📊</span> <span id="overviewHeading">Statewide Traffic Risk & Corridor Overview</span></h2>
             <p class="card-subtitle" id="overviewSub">Analysis of critical highway corridors across Maharashtra and source historical accident data.</p>
           </div>
-          <button class="btn-github" onclick="switchTab('analyzer')">Open AI Predictor →</button>
+          <button class="btn-calc" style="padding: 8px 16px; font-size: 0.85rem;" onclick="switchTab('analyzer')">Open AI Predictor →</button>
         </div>
 
+        <div class="swipe-hint">👉 Swipe horizontally to view full corridor stats</div>
         <div class="table-responsive">
           <table>
             <thead>
@@ -866,6 +1099,7 @@
           <span class="badge badge-med">Source Corridor Data</span>
         </div>
 
+        <div class="swipe-hint">👉 Swipe horizontally to view full segment rankings</div>
         <div class="table-responsive">
           <table>
             <thead>
@@ -1025,7 +1259,7 @@
           <div class="form-group">
             <label for="routeOrigin" id="lblOrigin">Origin City</label>
             <select class="form-control" id="routeOrigin">
-              <option value="mumbai">Mumbai (Chhatrapati Shivaji Maharaj Terminus / BKC)</option>
+              <option value="mumbai">Mumbai (CSMT / BKC / Thane)</option>
               <option value="pune">Pune (Shivajinagar / Hinjawadi)</option>
               <option value="nagpur">Nagpur</option>
             </select>
@@ -1040,16 +1274,16 @@
             </select>
           </div>
           <div class="form-group" style="display: flex; align-items: flex-end;">
-            <button class="btn-calc" onclick="compareRoutes()" id="btnCompare">Compare Corridors</button>
+            <button class="btn-calc" style="width: 100%;" onclick="compareRoutes()" id="btnCompare">Compare Corridors</button>
           </div>
         </div>
 
         <div id="routeResults">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px;">
-            <div style="background: rgba(14, 165, 233, 0.08); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: var(--radius-md); padding: 18px;">
+            <div style="background: rgba(14, 165, 233, 0.08); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: var(--radius-md); padding: 16px;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                 <h3 style="font-size: 1.05rem; color: #38bdf8;">Option A: Yashwantrao Chavan Expressway</h3>
-                <span class="badge badge-low">Recommended Speed Route</span>
+                <span class="badge badge-low">Recommended Speed</span>
               </div>
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Distance: <strong>94.5 km</strong> | Time: <strong>~1h 45m</strong> | Speed Limit: <strong>100 km/h</strong></p>
               <ul style="font-size: 0.82rem; color: var(--text-table); line-height: 1.6; padding-left: 20px;">
@@ -1059,10 +1293,10 @@
               </ul>
             </div>
 
-            <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-md); padding: 18px;">
+            <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-md); padding: 16px;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                 <h3 style="font-size: 1.05rem; color: #fbbf24;">Option B: Old Mumbai-Pune Highway (NH-48)</h3>
-                <span class="badge badge-med">Scenic / Two-Wheeler Route</span>
+                <span class="badge badge-med">Scenic / Two-Wheelers</span>
               </div>
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Distance: <strong>118 km</strong> | Time: <strong>~3h 10m</strong> | Speed Limit: <strong>60-80 km/h</strong></p>
               <ul style="font-size: 0.82rem; color: var(--text-table); line-height: 1.6; padding-left: 20px;">
@@ -1084,7 +1318,7 @@
             <h2 class="card-title"><span>💬</span> <span id="chatHeading">RoadGuard AI Multilingual Assistant</span></h2>
             <p class="card-subtitle" id="chatSub">Ask about highway rules, safety tips, accident data caveats, emergency numbers, and corridor guidance in English, Hindi, or Marathi.</p>
           </div>
-          <button class="btn-github" style="font-size: 0.78rem; padding: 4px 10px;" onclick="clearChat()">Clear Chat</button>
+          <button class="btn-calc" style="font-size: 0.78rem; padding: 6px 12px; min-height: 32px;" onclick="clearChat()">Clear Chat</button>
         </div>
 
         <div class="chat-container">
@@ -1098,7 +1332,7 @@
           <div class="chat-quick" id="chatQuickChips">
             <span class="chip" onclick="askPreset('Is this route safe?')">Is this route safe?</span>
             <span class="chip" onclick="askPreset('What data does this app use?')">What data does this app use?</span>
-            <span class="chip" onclick="askPreset('What does the severity model predict?')">What does the severity model predict?</span>
+            <span class="chip" onclick="askPreset('What does the severity model predict?')">What does severity model predict?</span>
             <span class="chip" onclick="askPreset('How do I report a pothole or road hazard?')">How do I report a pothole?</span>
             <span class="chip" onclick="askPreset('Emergency contact numbers')">Emergency helplines</span>
           </div>
@@ -1142,7 +1376,7 @@
             <input type="text" class="form-control" id="hazardDesc" placeholder="e.g., Deep crater in left lane after tunnel" required>
           </div>
           <div class="form-group" style="grid-column: 1 / -1; display: flex; justify-content: flex-end;">
-            <button type="submit" class="btn-calc" id="btnSubmitHazard">Submit Hazard Notice</button>
+            <button type="submit" class="btn-calc" style="width: 100%;" id="btnSubmitHazard">Submit Hazard Notice</button>
           </div>
         </form>
 
@@ -1176,23 +1410,23 @@
           </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-          <div style="background: var(--table-stripe); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px;">
-            <h3 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 10px;">🌐 Vercel Web Deployment</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
-              This web portal runs natively on <strong>Vercel</strong> via <code>index.html</code> and <code>vercel.json</code>. It delivers instant loading, global edge caching, and interactive JavaScript features for all users without server cold-starts.
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <div style="background: var(--table-stripe); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px;">
+            <h3 style="color: var(--primary); font-size: 1.05rem; margin-bottom: 8px;">🌐 Vercel Web Deployment</h3>
+            <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
+              This web portal runs natively on <strong>Vercel</strong> via <code>index.html</code> and <code>vercel.json</code>. It delivers instant loading, mobile touch optimization, and interactive JavaScript features for all devices.
             </p>
-            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.8rem; color: var(--primary);">
-              Status: Live & Configured on Vercel (Dark & Light Mode Supported)
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 8px 12px; border-radius: 6px; font-family: monospace; font-size: 0.78rem; color: var(--primary);">
+              Status: Live & Mobile Optimized
             </div>
           </div>
 
-          <div style="background: var(--table-stripe); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px;">
-            <h3 style="color: #818cf8; font-size: 1.1rem; margin-bottom: 10px;">🐍 Full Streamlit Python Engine</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
+          <div style="background: var(--table-stripe); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px;">
+            <h3 style="color: #818cf8; font-size: 1.05rem; margin-bottom: 8px;">🐍 Full Streamlit Python Engine</h3>
+            <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
               The full Python prototype with Folium geospatial maps and Scikit-Learn Random Forest models is hosted via Streamlit. You can launch it with <code>streamlit run app.py</code> locally or on Streamlit Community Cloud.
             </p>
-            <a href="https://share.streamlit.io" target="_blank" rel="noopener noreferrer" class="btn-github" style="font-size: 0.85rem;">
+            <a href="https://share.streamlit.io" target="_blank" rel="noopener noreferrer" class="btn-calc" style="font-size: 0.84rem; padding: 8px 16px; min-height: 40px; text-decoration: none;">
               Deploy on Streamlit Cloud →
             </a>
           </div>
@@ -1200,6 +1434,36 @@
       </div>
     </section>
   </main>
+
+  <!-- Mobile Bottom App Bar (Visible on phones & tablets <= 768px) -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <div class="mobile-nav-grid">
+      <button class="mobile-nav-item active" onclick="switchTab('overview')" id="mNavOverview">
+        <span class="mobile-nav-icon">📊</span>
+        <span id="mNavOverviewLabel">Overview</span>
+      </button>
+      <button class="mobile-nav-item" onclick="switchTab('hotspots')" id="mNavHotspots">
+        <span class="mobile-nav-icon">🔥</span>
+        <span id="mNavHotspotsLabel">Hotspots</span>
+      </button>
+      <button class="mobile-nav-item" onclick="switchTab('analyzer')" id="mNavAnalyzer">
+        <span class="mobile-nav-icon">🤖</span>
+        <span id="mNavAnalyzerLabel">AI Risk</span>
+      </button>
+      <button class="mobile-nav-item" onclick="switchTab('routes')" id="mNavRoutes">
+        <span class="mobile-nav-icon">🛣️</span>
+        <span id="mNavRoutesLabel">Routes</span>
+      </button>
+      <button class="mobile-nav-item" onclick="switchTab('chatbot')" id="mNavChatbot">
+        <span class="mobile-nav-icon">💬</span>
+        <span id="mNavChatbotLabel">Assistant</span>
+      </button>
+      <button class="mobile-nav-item" onclick="switchTab('reports')" id="mNavReports">
+        <span class="mobile-nav-icon">📝</span>
+        <span id="mNavReportsLabel">Reports</span>
+      </button>
+    </div>
+  </nav>
 
   <footer>
     <div class="container">
@@ -1210,7 +1474,7 @@
         <a href="#" onclick="switchTab('chatbot'); return false;">Assistant</a>
         <a href="tel:112">Emergency: 112</a>
       </div>
-      <p id="footerCopy">RoadGuard Maharashtra — Open Safety Prototype. Data covers source corridor chainage; not verified statewide live telemetry.</p>
+      <p id="footerCopy">RoadGuard Maharashtra — Open Safety Prototype. Mobile-first traffic risk intelligence.</p>
     </div>
   </footer>
 
@@ -1235,16 +1499,18 @@
       document.documentElement.setAttribute('data-theme', theme);
       const icon = document.getElementById('themeIcon');
       const label = document.getElementById('themeLabel');
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
       if (theme === 'light') {
         if (icon) icon.innerText = '☀️';
         if (label) label.innerText = 'Light';
+        if (metaTheme) metaTheme.setAttribute('content', '#f8fafc');
       } else {
         if (icon) icon.innerText = '🌙';
         if (label) label.innerText = 'Dark';
+        if (metaTheme) metaTheme.setAttribute('content', '#070e1b');
       }
     }
 
-    // Initialize theme immediately on script execution
     initTheme();
 
     // ---------------- Translations Dictionary ----------------
@@ -1252,7 +1518,7 @@
       en: {
         tagline: "Traffic Safety & Risk Intelligence",
         systemStatus: "System Active",
-        helplineText: "Maharashtra Highway Emergency Helplines:",
+        helplineText: "Highway Emergency Helplines:",
         tabOverview: "📊 Overview",
         tabHotspots: "🔥 Corridor Hotspots",
         tabAnalyzer: "🤖 AI What-If Predictor",
@@ -1260,6 +1526,12 @@
         tabChatbot: "💬 RoadGuard Assistant",
         tabReports: "📝 Hazard Reports",
         tabDeploy: "🚀 Deployment Info",
+        mOverview: "Overview",
+        mHotspots: "Hotspots",
+        mAnalyzer: "AI Risk",
+        mRoutes: "Routes",
+        mChatbot: "Assistant",
+        mReports: "Reports",
         lblAccidents: "Historical Records",
         descAccidents: "Cleaned accident database rows",
         lblCorridors: "High-Risk Corridors",
@@ -1274,7 +1546,7 @@
       hi: {
         tagline: "ट्रैफिक सुरक्षा और दुर्घटना जोखिम विश्लेषण",
         systemStatus: "सिस्टम सक्रिय",
-        helplineText: "महाराष्ट्र राजमार्ग आपातकालीन हेल्पलाइन:",
+        helplineText: "राजमार्ग आपातकालीन हेल्पलाइन:",
         tabOverview: "📊 ओवरव्यू",
         tabHotspots: "🔥 कॉरिडोर हॉटस्पॉट",
         tabAnalyzer: "🤖 AI जोखिम विश्लेषक",
@@ -1282,6 +1554,12 @@
         tabChatbot: "💬 RoadGuard सहायक",
         tabReports: "📝 सड़क समस्या रिपोर्ट",
         tabDeploy: "🚀 परिनियोजन विवरण",
+        mOverview: "ओवरव्यू",
+        mHotspots: "हॉटस्पॉट",
+        mAnalyzer: "AI जोखिम",
+        mRoutes: "रास्ते",
+        mChatbot: "सहायक",
+        mReports: "रिपोर्ट",
         lblAccidents: "ऐतिहासिक रिकॉर्ड",
         descAccidents: "विश्लेषित दुर्घटना डेटा",
         lblCorridors: "उच्च जोखिम कॉरिडोर",
@@ -1296,7 +1574,7 @@
       mr: {
         tagline: "वाहतूक सुरक्षा आणि अपघात जोखीम विश्लेषण",
         systemStatus: "प्रणाली कार्यरत",
-        helplineText: "महाराष्ट्र महामार्ग आपत्कालीन हेल्पलाइन:",
+        helplineText: "महामार्ग आपत्कालीन हेल्पलाइन:",
         tabOverview: "📊 आढावा",
         tabHotspots: "🔥 अपघात प्रवण क्षेत्र (हॉटस्पॉट)",
         tabAnalyzer: "🤖 AI जोखीम विश्लेषक",
@@ -1304,6 +1582,12 @@
         tabChatbot: "💬 RoadGuard सहाय्यक",
         tabReports: "📝 रस्ता समस्या नोंदवा",
         tabDeploy: "🚀 डिप्लॉयमेंट माहिती",
+        mOverview: "आढावा",
+        mHotspots: "हॉटस्पॉट",
+        mAnalyzer: "AI जोखीम",
+        mRoutes: "मार्ग",
+        mChatbot: "सहाय्यक",
+        mReports: "समस्या",
         lblAccidents: "ऐतिहासिक नोंदी",
         descAccidents: "तपासलेला अपघात डेटा",
         lblCorridors: "अति-जोखमीचे मार्ग",
@@ -1332,6 +1616,15 @@
       document.getElementById('tabBtnChatbot').innerText = t.tabChatbot;
       document.getElementById('tabBtnReports').innerText = t.tabReports;
       document.getElementById('tabBtnDeploy').innerText = t.tabDeploy;
+
+      // Mobile bottom bar labels
+      document.getElementById('mNavOverviewLabel').innerText = t.mOverview;
+      document.getElementById('mNavHotspotsLabel').innerText = t.mHotspots;
+      document.getElementById('mNavAnalyzerLabel').innerText = t.mAnalyzer;
+      document.getElementById('mNavRoutesLabel').innerText = t.mRoutes;
+      document.getElementById('mNavChatbotLabel').innerText = t.mChatbot;
+      document.getElementById('mNavReportsLabel').innerText = t.mReports;
+
       document.getElementById('lblAccidents').innerText = t.lblAccidents;
       document.getElementById('descAccidents').innerText = t.descAccidents;
       document.getElementById('lblCorridors').innerText = t.lblCorridors;
@@ -1347,12 +1640,13 @@
     }
 
     function switchTab(tabId) {
+      // Toggle tab content
       document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-
       const targetSec = document.getElementById('tab-' + tabId);
       if (targetSec) targetSec.classList.add('active');
 
+      // Update Desktop Nav
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
       const btnMap = {
         overview: 'tabBtnOverview',
         hotspots: 'tabBtnHotspots',
@@ -1366,13 +1660,33 @@
         const targetBtn = document.getElementById(btnMap[tabId]);
         if (targetBtn) targetBtn.classList.add('active');
       }
+
+      // Update Mobile Nav
+      document.querySelectorAll('.mobile-nav-item').forEach(item => item.classList.remove('active'));
+      const mNavMap = {
+        overview: 'mNavOverview',
+        hotspots: 'mNavHotspots',
+        analyzer: 'mNavAnalyzer',
+        routes: 'mNavRoutes',
+        chatbot: 'mNavChatbot',
+        reports: 'mNavReports'
+      };
+      if (mNavMap[tabId]) {
+        const targetMNav = document.getElementById(mNavMap[tabId]);
+        if (targetMNav) targetMNav.classList.add('active');
+      }
+
+      // Smooth scroll on mobile to tab content
+      if (window.innerWidth <= 768) {
+        window.scrollTo({ top: 180, behavior: 'smooth' });
+      }
     }
 
     function showToast(msg) {
       const toast = document.getElementById('toast');
       toast.innerText = msg;
       toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2800);
+      setTimeout(() => toast.classList.remove('show'), 2600);
     }
 
     // AI Prediction Calculator
@@ -1415,15 +1729,15 @@
 
       if (fatal > 25) {
         badge.className = 'badge badge-high';
-        badge.innerText = 'High Fatality Probability Risk';
-        advice.innerHTML = '⚠️ <strong>High Risk Factors:</strong> Night driving, high speeds, or vulnerable vehicle type significantly elevate crash impact. Reduce speed below 60 km/h, keep headlights on low-beam in fog/rain, and take rest stops every 2 hours.';
+        badge.innerText = 'High Fatality Risk';
+        advice.innerHTML = '⚠️ <strong>High Risk Factors:</strong> Night driving, high speeds, or vulnerable vehicle type significantly elevate crash impact. Reduce speed below 60 km/h and take rest stops every 2 hours.';
       } else if (severe > 40) {
         badge.className = 'badge badge-med';
         badge.innerText = 'Moderate Severity Risk';
         advice.innerHTML = '⚡ <strong>Moderate Hazard:</strong> Wet roads or curve geometry require focused braking before entering turns. Maintain 4-second following distance.';
       } else {
         badge.className = 'badge badge-low';
-        badge.innerText = 'Lower Relative Severity Risk';
+        badge.innerText = 'Lower Relative Severity';
         advice.innerHTML = '🟢 <strong>Favorable Conditions:</strong> Daylight and moderate speeds are statistically safer. Ensure continuous seatbelt adherence and lane discipline.';
       }
 
@@ -1472,7 +1786,7 @@
       const qLower = q.toLowerCase();
 
       if (qLower.includes('emergency') || qLower.includes('police') || qLower.includes('ambulance') || qLower.includes('help') || qLower.includes('आपात') || qLower.includes('आपत्कालीन')) {
-        return "🚨 <strong>Emergency Contact Directory:</strong><br>• National Emergency: <strong>112</strong><br>• Maharashtra Highway Traffic Police: <strong>98224-98224</strong><br>• MSRDC (Mumbai-Pune Expressway Helpline): <strong>1800-233-2233</strong><br>• Ambulance / Medical: <strong>108</strong>";
+        return "🚨 <strong>Emergency Contact Directory:</strong><br>• National Emergency: <strong><a href='tel:112' style='color:#38bdf8;'>112</a></strong><br>• Maharashtra Highway Traffic Police: <strong><a href='tel:9822498224' style='color:#38bdf8;'>98224-98224</a></strong><br>• MSRDC (Mumbai-Pune Expressway Helpline): <strong><a href='tel:18002332233' style='color:#38bdf8;'>1800-233-2233</a></strong><br>• Ambulance / Medical: <strong><a href='tel:108' style='color:#38bdf8;'>108</a></strong>";
       }
 
       if (qLower.includes('route') || qLower.includes('safe') || qLower.includes('expressway') || qLower.includes('highway') || qLower.includes('रास्ता') || qLower.includes('मार्ग')) {
@@ -1491,7 +1805,6 @@
         return "📝 <strong>Hazard Reporting:</strong><br>You can record road issues under the <strong>Hazard Reports</strong> tab. Specify the highway name, nearest kilometre chainage, and hazard type. Reports are shared across the session to keep motorists alert.";
       }
 
-      // Default response
       if (lang === 'hi') {
         return "मैं राजमार्ग सुरक्षा, दुर्घटना डेटा, रास्तों की तुलना और आपातकालीन नंबरों में मदद कर सकता हूँ। आप पूछ सकते हैं: <strong>“क्या यह रास्ता सुरक्षित है?”</strong>, <strong>“आपातकालीन नंबर क्या हैं?”</strong> या <strong>“डेटासेट में क्या है?”</strong>";
       } else if (lang === 'mr') {
