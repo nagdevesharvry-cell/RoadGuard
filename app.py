@@ -742,6 +742,9 @@ def main():
     if "language" not in st.session_state: 
         st.session_state.language = "English"
         
+    if "theme" not in st.session_state:
+        st.session_state.theme = "Dark"
+        
     # High-End Modern Design System CSS
     st.markdown("""<style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -983,6 +986,43 @@ def main():
         border-color: rgba(255, 255, 255, 0.25) !important;
     }
     </style>""", unsafe_allow_html=True)
+
+    if st.session_state.get("theme", "Dark") == "Light":
+        st.markdown("""<style>
+        html, body, [class*="css"], .stApp {
+            background: #f8fafc !important;
+            color: #0f172a !important;
+        }
+        header[data-testid="stHeader"] {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        }
+        header[data-testid="stHeader"] * {
+            color: #334155 !important;
+        }
+        [data-testid="stSidebar"] {
+            background: #ffffff !important;
+            border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
+        }
+        [data-testid="stSidebar"] hr {
+            border-color: rgba(0, 0, 0, 0.08) !important;
+        }
+        .metric-card {
+            background: #ffffff !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+        }
+        .metric-val {
+            color: #0f172a !important;
+        }
+        div[data-testid="stRadio"] label {
+            background: rgba(0, 0, 0, 0.03) !important;
+            border: 1px solid rgba(0, 0, 0, 0.06) !important;
+        }
+        div[data-testid="stRadio"] label p {
+            color: #1e293b !important;
+        }
+        </style>""", unsafe_allow_html=True)
     
     with st.sidebar:
         st.markdown("## 🚦 RoadGuard")
@@ -999,6 +1039,15 @@ def main():
         st.divider()
         lang = st.selectbox(tr("language"), ["English", "Hindi", "Marathi"], index=["English", "Hindi", "Marathi"].index(st.session_state.language))
         st.session_state.language = lang
+        
+        theme_names = [tr("dark"), tr("light")]
+        theme_idx = 0 if st.session_state.theme == "Dark" else 1
+        sel_theme = st.selectbox(tr("theme"), theme_names, index=theme_idx)
+        new_theme = "Dark" if sel_theme == tr("dark") else "Light"
+        if new_theme != st.session_state.theme:
+            st.session_state.theme = new_theme
+            st.rerun()
+            
         if st.button(tr("logout"), use_container_width=True):
             st.session_state.authenticated = False
             st.session_state.demo_user = False
@@ -1046,6 +1095,12 @@ def main():
         st.selectbox(tr("language"), ["English", "Hindi", "Marathi"], key="settings_language", index=["English", "Hindi", "Marathi"].index(st.session_state.language))
         if st.session_state.settings_language != st.session_state.language:
             st.session_state.language = st.session_state.settings_language
+            st.rerun()
+            
+        st.selectbox(tr("theme"), [tr("dark"), tr("light")], key="settings_theme", index=0 if st.session_state.theme == "Dark" else 1)
+        new_set_theme = "Dark" if st.session_state.settings_theme == tr("dark") else "Light"
+        if new_set_theme != st.session_state.theme:
+            st.session_state.theme = new_set_theme
             st.rerun()
         st.markdown("### " + tr("setup"))
         st.markdown("- Bundled dataset has 8,116 raw rows and chainage-based location values, but no latitude/longitude or named-road lookup.\n- Severity label meanings are assumptions in `data/labels.csv`; verify official codebook.\n- Route risk scores and optional city circles are illustrative demo data, not model-derived.\n- Firebase email/password requires `firebase.api_key`; Google sign-in requires Streamlit OIDC settings.\n- Hazard reports are session-only and do not contact emergency services.")

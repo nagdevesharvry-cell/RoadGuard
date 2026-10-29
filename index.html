@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +9,59 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
+    /* ---------------- Theme Tokens (Dark & Light) ---------------- */
+    :root, [data-theme="dark"] {
       --bg-dark: #070e1b;
+      --bg-gradient: radial-gradient(circle at 10% 12%, rgba(14, 165, 233, 0.12), transparent 32%),
+                     radial-gradient(circle at 90% 70%, rgba(99, 102, 241, 0.09), transparent 36%),
+                     #070e1b;
+      --bg-header: rgba(7, 14, 27, 0.88);
       --bg-card: rgba(14, 25, 45, 0.78);
-      --bg-card-hover: rgba(18, 32, 58, 0.9);
+      --bg-card-hover: rgba(18, 32, 58, 0.92);
+      --bg-inner: rgba(0, 0, 0, 0.28);
+      --bg-input: rgba(255, 255, 255, 0.05);
       --border-subtle: rgba(255, 255, 255, 0.08);
       --border-highlight: rgba(14, 165, 233, 0.35);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
+      --text-table: #e2e8f0;
       --primary: #0ea5e9;
       --primary-glow: rgba(14, 165, 233, 0.25);
       --accent-indigo: #6366f1;
       --accent-emerald: #10b981;
       --accent-amber: #f59e0b;
       --accent-rose: #f43f5e;
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+      --table-stripe: rgba(255, 255, 255, 0.02);
+      --chat-bot-bg: rgba(255, 255, 255, 0.05);
+      --chat-bot-text: #f1f5f9;
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
-      --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="light"] {
+      --bg-dark: #f1f5f9;
+      --bg-gradient: radial-gradient(circle at 10% 12%, rgba(14, 165, 233, 0.09), transparent 30%),
+                     radial-gradient(circle at 90% 70%, rgba(99, 102, 241, 0.06), transparent 35%),
+                     #f8fafc;
+      --bg-header: rgba(255, 255, 255, 0.92);
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-hover: #ffffff;
+      --bg-inner: rgba(241, 245, 249, 0.85);
+      --bg-input: #ffffff;
+      --border-subtle: rgba(15, 23, 42, 0.08);
+      --border-highlight: rgba(14, 165, 233, 0.5);
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-table: #1e293b;
+      --primary: #0284c7;
+      --primary-glow: rgba(14, 165, 233, 0.15);
+      --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.06);
+      --table-stripe: rgba(15, 23, 42, 0.02);
+      --chat-bot-bg: #f8fafc;
+      --chat-bot-text: #0f172a;
     }
 
     * {
@@ -37,31 +72,30 @@
 
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at 10% 12%, rgba(14, 165, 233, 0.12), transparent 32%),
-                  radial-gradient(circle at 90% 70%, rgba(99, 102, 241, 0.09), transparent 36%),
-                  var(--bg-dark);
+      background: var(--bg-gradient);
       background-attachment: fixed;
       color: var(--text-main);
       min-height: 100vh;
       line-height: 1.55;
       overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    /* Container */
     .container {
       max-width: 1380px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* Header */
+    /* ---------------- Header ---------------- */
     header {
-      background: rgba(7, 14, 27, 0.85);
+      background: var(--bg-header);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
       position: sticky;
       top: 0;
       z-index: 100;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
     .header-inner {
       display: flex;
@@ -93,7 +127,12 @@
       font-size: 1.35rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(90deg, #38bdf8, #818cf8, #f8fafc);
+      background: linear-gradient(90deg, #38bdf8, #818cf8, #0ea5e9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    [data-theme="light"] .brand-title {
+      background: linear-gradient(90deg, #0284c7, #4f46e5);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -108,7 +147,7 @@
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
     .status-pill {
       display: inline-flex;
@@ -116,11 +155,16 @@
       gap: 8px;
       background: rgba(16, 185, 129, 0.12);
       border: 1px solid rgba(16, 185, 129, 0.28);
-      color: #34d399;
+      color: #10b981;
       padding: 6px 14px;
       border-radius: 9999px;
       font-size: 0.8rem;
       font-weight: 600;
+    }
+    [data-theme="light"] .status-pill {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: #047857;
     }
     .status-dot {
       width: 8px;
@@ -135,8 +179,34 @@
       50% { opacity: 0.45; transform: scale(0.85); }
     }
 
+    /* Theme Toggle Button */
+    .theme-toggle-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: var(--transition);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .theme-toggle-btn:hover {
+      border-color: var(--primary);
+      background: rgba(14, 165, 233, 0.12);
+      transform: translateY(-1px);
+    }
+    .theme-icon {
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+
     .lang-select {
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       color: var(--text-main);
       padding: 7px 12px;
@@ -151,7 +221,7 @@
       border-color: var(--primary);
     }
     .btn-github {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       color: var(--text-main);
       padding: 8px 16px;
@@ -165,16 +235,15 @@
       transition: var(--transition);
     }
     .btn-github:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.3);
+      border-color: var(--primary);
       transform: translateY(-1px);
     }
 
-    /* Navigation Bar */
+    /* ---------------- Navigation Bar ---------------- */
     .nav-bar {
       display: flex;
       gap: 6px;
-      background: rgba(14, 25, 45, 0.4);
+      background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       padding: 6px;
@@ -198,16 +267,16 @@
     }
     .nav-btn:hover {
       color: var(--text-main);
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(14, 165, 233, 0.08);
     }
     .nav-btn.active {
       background: linear-gradient(135deg, rgba(14, 165, 233, 0.22), rgba(99, 102, 241, 0.16));
       border-color: var(--primary);
-      color: #38bdf8;
-      box-shadow: 0 0 14px rgba(14, 165, 233, 0.22);
+      color: var(--primary);
+      box-shadow: 0 0 14px var(--primary-glow);
     }
 
-    /* Helplines Bar */
+    /* ---------------- Helplines Bar ---------------- */
     .helpline-bar {
       display: flex;
       flex-wrap: wrap;
@@ -223,10 +292,13 @@
     }
     .helpline-title {
       font-weight: 700;
-      color: #fca5a5;
+      color: #f87171;
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+    [data-theme="light"] .helpline-title {
+      color: #dc2626;
     }
     .helpline-chips {
       display: flex;
@@ -234,8 +306,8 @@
       gap: 10px;
     }
     .helpline-tag {
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
       padding: 4px 12px;
       border-radius: 9999px;
       color: var(--text-main);
@@ -249,10 +321,10 @@
     }
     .helpline-tag:hover {
       border-color: var(--accent-rose);
-      background: rgba(239, 68, 68, 0.2);
+      background: rgba(239, 68, 68, 0.15);
     }
 
-    /* Metric Cards Grid */
+    /* ---------------- Metric Cards Grid ---------------- */
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -275,12 +347,12 @@
       position: relative;
       overflow: hidden;
       transition: var(--transition);
+      box-shadow: var(--shadow-card);
     }
     .metric-card:hover {
       background: var(--bg-card-hover);
       border-color: var(--border-highlight);
       transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
     }
     .metric-card::before {
       content: '';
@@ -308,7 +380,7 @@
       font-family: 'Outfit', sans-serif;
       font-size: 2.25rem;
       font-weight: 800;
-      color: #fff;
+      color: var(--text-main);
       letter-spacing: -0.03em;
       line-height: 1.1;
       margin-bottom: 6px;
@@ -318,7 +390,7 @@
       color: var(--text-muted);
     }
 
-    /* Content Cards */
+    /* ---------------- Content Cards ---------------- */
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -326,6 +398,7 @@
       padding: 26px;
       backdrop-filter: blur(14px);
       margin-bottom: 24px;
+      box-shadow: var(--shadow-card);
     }
     .card-header {
       display: flex;
@@ -342,6 +415,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      color: var(--text-main);
     }
     .card-subtitle {
       font-size: 0.82rem;
@@ -349,7 +423,7 @@
       margin-top: 3px;
     }
 
-    /* Corridors Table */
+    /* ---------------- Tables ---------------- */
     .table-responsive {
       overflow-x: auto;
     }
@@ -360,7 +434,7 @@
       font-size: 0.88rem;
     }
     th {
-      background: rgba(255, 255, 255, 0.03);
+      background: var(--table-stripe);
       padding: 12px 16px;
       font-weight: 700;
       color: var(--text-muted);
@@ -371,11 +445,11 @@
     }
     td {
       padding: 14px 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      color: #e2e8f0;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-table);
     }
     tr:hover td {
-      background: rgba(255, 255, 255, 0.025);
+      background: var(--table-stripe);
     }
     .badge {
       display: inline-block;
@@ -384,11 +458,11 @@
       font-size: 0.74rem;
       font-weight: 700;
     }
-    .badge-high { background: rgba(239, 68, 68, 0.18); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; }
-    .badge-med { background: rgba(245, 158, 11, 0.18); border: 1px solid rgba(245, 158, 11, 0.4); color: #fde68a; }
-    .badge-low { background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.4); color: #86efac; }
+    .badge-high { background: rgba(239, 68, 68, 0.16); border: 1px solid rgba(239, 68, 68, 0.35); color: #ef4444; }
+    .badge-med { background: rgba(245, 158, 11, 0.16); border: 1px solid rgba(245, 158, 11, 0.35); color: #d97706; }
+    .badge-low { background: rgba(16, 185, 129, 0.16); border: 1px solid rgba(16, 185, 129, 0.35); color: #059669; }
 
-    /* Interactive Calculator Form */
+    /* ---------------- Forms & Calculator ---------------- */
     .form-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -407,9 +481,9 @@
     }
     .form-control {
       width: 100%;
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
-      color: #fff;
+      color: var(--text-main);
       padding: 10px 14px;
       border-radius: var(--radius-sm);
       font-size: 0.9rem;
@@ -439,14 +513,14 @@
 
     .prediction-box {
       margin-top: 20px;
-      background: rgba(0, 0, 0, 0.3);
+      background: var(--bg-inner);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       padding: 20px;
     }
     .progress-bar {
       height: 10px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(148, 163, 184, 0.2);
       border-radius: 9999px;
       overflow: hidden;
       margin: 8px 0 16px 0;
@@ -457,12 +531,12 @@
       transition: width 0.4s ease;
     }
 
-    /* Chatbot Styles */
+    /* ---------------- Chatbot ---------------- */
     .chat-container {
       display: flex;
       flex-direction: column;
       height: 520px;
-      background: rgba(7, 14, 27, 0.6);
+      background: var(--bg-inner);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       overflow: hidden;
@@ -484,28 +558,32 @@
     }
     .chat-msg.bot {
       align-self: flex-start;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--chat-bot-bg);
       border: 1px solid var(--border-subtle);
-      color: #f1f5f9;
+      color: var(--chat-bot-text);
       border-bottom-left-radius: 2px;
     }
     .chat-msg.user {
       align-self: flex-end;
       background: linear-gradient(135deg, rgba(14, 165, 233, 0.3), rgba(99, 102, 241, 0.25));
       border: 1px solid rgba(14, 165, 233, 0.4);
-      color: #fff;
+      color: var(--text-main);
       border-bottom-right-radius: 2px;
+    }
+    [data-theme="light"] .chat-msg.user {
+      background: linear-gradient(135deg, #0284c7, #4f46e5);
+      color: #ffffff;
     }
     .chat-quick {
       padding: 10px 16px;
-      background: rgba(0, 0, 0, 0.25);
+      background: var(--table-stripe);
       border-top: 1px solid var(--border-subtle);
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
     .chip {
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       color: var(--text-muted);
       padding: 5px 12px;
@@ -518,21 +596,21 @@
     .chip:hover {
       background: rgba(14, 165, 233, 0.15);
       border-color: var(--primary);
-      color: #38bdf8;
+      color: var(--primary);
     }
     .chat-input-bar {
       display: flex;
       gap: 10px;
       padding: 12px 16px;
       border-top: 1px solid var(--border-subtle);
-      background: rgba(14, 25, 45, 0.8);
+      background: var(--bg-card);
     }
     .chat-input {
       flex: 1;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      color: #fff;
+      color: var(--text-main);
       padding: 10px 14px;
       font-size: 0.9rem;
       outline: none;
@@ -554,7 +632,7 @@
       background: #0284c7;
     }
 
-    /* Section Visibility */
+    /* ---------------- Tab Sections ---------------- */
     .tab-section {
       display: none;
     }
@@ -567,7 +645,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Footer */
+    /* ---------------- Footer ---------------- */
     footer {
       border-top: 1px solid var(--border-subtle);
       padding: 36px 0;
@@ -583,7 +661,7 @@
       margin-bottom: 12px;
     }
     .footer-links a {
-      color: #38bdf8;
+      color: var(--primary);
       text-decoration: none;
       font-weight: 600;
     }
@@ -591,7 +669,7 @@
       text-decoration: underline;
     }
 
-    /* Notification Toast */
+    /* ---------------- Notification Toast ---------------- */
     #toast {
       position: fixed;
       bottom: 24px;
@@ -628,6 +706,12 @@
         </div>
       </a>
       <div class="header-actions">
+        <!-- Theme Switcher (Dark / Light) -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle dark/light mode" title="Switch Theme">
+          <span class="theme-icon" id="themeIcon">🌙</span>
+          <span id="themeLabel">Dark</span>
+        </button>
+
         <div class="status-pill">
           <span class="status-dot"></span>
           <span id="systemStatus">System Active</span>
@@ -920,7 +1004,7 @@
             <div>🟢 <span id="lblMinor">Minor / Property</span>: <strong style="color: #4ade80;" id="valMinor">38%</strong></div>
           </div>
 
-          <div style="background: rgba(255,255,255,0.03); border-radius: var(--radius-sm); padding: 12px; font-size: 0.84rem; border-left: 3px solid var(--primary);" id="resAdvice">
+          <div style="background: var(--table-stripe); border-radius: var(--radius-sm); padding: 12px; font-size: 0.84rem; border-left: 3px solid var(--primary);" id="resAdvice">
             💡 <strong>Safety Recommendation:</strong> For highway speeds with standard conditions, ensure mandatory seatbelts for all occupants, maintain 3-second headway distance, and stay alert on curve approaches.
           </div>
         </div>
@@ -968,7 +1052,7 @@
                 <span class="badge badge-low">Recommended Speed Route</span>
               </div>
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Distance: <strong>94.5 km</strong> | Time: <strong>~1h 45m</strong> | Speed Limit: <strong>100 km/h</strong></p>
-              <ul style="font-size: 0.82rem; color: #e2e8f0; line-height: 1.6; padding-left: 20px;">
+              <ul style="font-size: 0.82rem; color: var(--text-table); line-height: 1.6; padding-left: 20px;">
                 <li>6-lane concrete expressway with median barriers and emergency lay-bys.</li>
                 <li>Critical caution: Watch out for brake failure zones at Bhor Ghat (km 38-46).</li>
                 <li>Average toll: ₹320 (cars). Continuous CCTV enforcement in effect.</li>
@@ -981,7 +1065,7 @@
                 <span class="badge badge-med">Scenic / Two-Wheeler Route</span>
               </div>
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Distance: <strong>118 km</strong> | Time: <strong>~3h 10m</strong> | Speed Limit: <strong>60-80 km/h</strong></p>
-              <ul style="font-size: 0.82rem; color: #e2e8f0; line-height: 1.6; padding-left: 20px;">
+              <ul style="font-size: 0.82rem; color: var(--text-table); line-height: 1.6; padding-left: 20px;">
                 <li>4-lane undivided in several sections with active local village crossings.</li>
                 <li>Permitted for 2-wheelers and 3-wheelers (which are banned on expressway).</li>
                 <li>Zero toll; higher frequency of minor intersection collisions.</li>
@@ -1064,17 +1148,17 @@
 
         <h3 style="font-size: 1rem; margin: 18px 0 12px 0;" id="recentHazardsTitle">Active Community Hazard Notices:</h3>
         <div id="hazardList" style="display: flex; flex-direction: column; gap: 10px;">
-          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px; display: flex; justify-content: space-between; align-items: center;">
+          <div style="background: var(--table-stripe); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px; display: flex; justify-content: space-between; align-items: center;">
             <div>
-              <strong style="color: #fca5a5;">⚠️ Deep Pothole on Curve</strong> — <span style="color: var(--text-muted); font-size: 0.85rem;">Khandala descent km 44.2 (Mumbai bound)</span>
-              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">Caution: High-speed lane impact reported. Road maintenance crew notified.</p>
+              <strong style="color: #f87171;">⚠️ Deep Pothole on Curve</strong> — <span style="color: var(--text-muted); font-size: 0.85rem;">Khandala descent km 44.2 (Mumbai bound)</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Caution: High-speed lane impact reported. Road maintenance crew notified.</p>
             </div>
             <span class="badge badge-high">Under Review</span>
           </div>
-          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px; display: flex; justify-content: space-between; align-items: center;">
+          <div style="background: var(--table-stripe); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px; display: flex; justify-content: space-between; align-items: center;">
             <div>
-              <strong style="color: #fde68a;">⚠️ Waterlogging During Rains</strong> — <span style="color: var(--text-muted); font-size: 0.85rem;">Panvel bypass near Kalamboli junction</span>
-              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">Reduced visibility and hydroplaning hazard. Keep speed under 40 km/h.</p>
+              <strong style="color: #fbbf24;">⚠️ Waterlogging During Rains</strong> — <span style="color: var(--text-muted); font-size: 0.85rem;">Panvel bypass near Kalamboli junction</span>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Reduced visibility and hydroplaning hazard. Keep speed under 40 km/h.</p>
             </div>
             <span class="badge badge-med">Active Notice</span>
           </div>
@@ -1093,17 +1177,17 @@
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px;">
-            <h3 style="color: #38bdf8; font-size: 1.1rem; margin-bottom: 10px;">🌐 Vercel Web Deployment</h3>
+          <div style="background: var(--table-stripe); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px;">
+            <h3 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 10px;">🌐 Vercel Web Deployment</h3>
             <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
               This web portal runs natively on <strong>Vercel</strong> via <code>index.html</code> and <code>vercel.json</code>. It delivers instant loading, global edge caching, and interactive JavaScript features for all users without server cold-starts.
             </p>
-            <div style="background: rgba(0,0,0,0.4); padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.8rem; color: #a5f3fc;">
-              Status: Live & Configured on Vercel
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.8rem; color: var(--primary);">
+              Status: Live & Configured on Vercel (Dark & Light Mode Supported)
             </div>
           </div>
 
-          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px;">
+          <div style="background: var(--table-stripe); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px;">
             <h3 style="color: #818cf8; font-size: 1.1rem; margin-bottom: 10px;">🐍 Full Streamlit Python Engine</h3>
             <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
               The full Python prototype with Folium geospatial maps and Scikit-Learn Random Forest models is hosted via Streamlit. You can launch it with <code>streamlit run app.py</code> locally or on Streamlit Community Cloud.
@@ -1133,7 +1217,37 @@
   <div id="toast">Notice updated</div>
 
   <script>
-    // Translations dictionary
+    // ---------------- Theme Management (Dark & Light) ----------------
+    function initTheme() {
+      const savedTheme = localStorage.getItem('roadguard_theme') || 'dark';
+      applyTheme(savedTheme);
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const target = current === 'dark' ? 'light' : 'dark';
+      applyTheme(target);
+      localStorage.setItem('roadguard_theme', target);
+      showToast(target === 'dark' ? 'Dark mode activated 🌙' : 'Light mode activated ☀️');
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      const icon = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+      if (theme === 'light') {
+        if (icon) icon.innerText = '☀️';
+        if (label) label.innerText = 'Light';
+      } else {
+        if (icon) icon.innerText = '🌙';
+        if (label) label.innerText = 'Dark';
+      }
+    }
+
+    // Initialize theme immediately on script execution
+    initTheme();
+
+    // ---------------- Translations Dictionary ----------------
     const I18N = {
       en: {
         tagline: "Traffic Safety & Risk Intelligence",
@@ -1398,12 +1512,12 @@
 
       const list = document.getElementById('hazardList');
       const item = document.createElement('div');
-      item.style.cssText = "background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-highlight); border-radius: var(--radius-sm); padding: 14px; display: flex; justify-content: space-between; align-items: center; animation: fadeIn 0.3s ease;";
+      item.style.cssText = "background: var(--table-stripe); border: 1px solid var(--border-highlight); border-radius: var(--radius-sm); padding: 14px; display: flex; justify-content: space-between; align-items: center; animation: fadeIn 0.3s ease;";
       item.innerHTML = `
         <div>
-          <strong style="color: #38bdf8;">⚠️ ${type}</strong> — <span style="color: var(--text-muted); font-size: 0.85rem;">${loc}</span>
-          <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">${desc}</p>
-          <span style="font-size: 0.72rem; color: #34d399;">Reported just now • Verified in session</span>
+          <strong style="color: var(--primary);">⚠️ ${type}</strong> — <span style="color: var(--text-muted); font-size: 0.85rem;">${loc}</span>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">${desc}</p>
+          <span style="font-size: 0.72rem; color: #10b981;">Reported just now • Verified in session</span>
         </div>
         <span class="badge badge-med">Active Notice</span>
       `;
