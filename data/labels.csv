@@ -1,0 +1,12 @@
+# Give the numeric codes real names. Columns: column,code,label
+# 'column' must be one of: severity, cause, weather, road_condition, road_feature, veh1, veh2, location_type, side
+# Severity labels below are an ASSUMPTION (1 = most severe). Replace with the official data dictionary.
+column,code,label
+severity,1,Fatal (assumed)
+severity,2,Grievous injury (assumed)
+severity,3,Minor injury (assumed)
+severity,4,No injury (assumed)
+location_type,1,Location type 1
+location_type,2,Location type 2
+side,1,Side 1
+side,2,Side 2
